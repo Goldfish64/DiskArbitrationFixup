@@ -133,7 +133,7 @@ PluginConfiguration ADDPR(config) {
     bootargBeta,
     arrsize(bootargBeta),
     KernelVersion::Mavericks,
-    KernelVersion::Mojave,
+    KernelVersion::Catalina,
     []() {
         dafxStart();
     }
