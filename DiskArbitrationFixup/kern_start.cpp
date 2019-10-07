@@ -60,8 +60,10 @@ static void buildPatch(void *user, KernelPatcher &patcher) {
     // Get contents of binary.
     size_t outSize;
     uint8_t *buffer = FileIO::readFileToBuffer(binPathDiskArbitrationAgent, outSize);
-    if (buffer == NULL)
-        panic("DiskArbitrationFixup: Failed to read binary: %s\n", binPathDiskArbitrationAgent);
+    if (buffer == NULL) {
+        DBGLOG("DiskArbitrationFixup", "Failed to read binary: %s\n", binPathDiskArbitrationAgent);
+        procInfo.section = procInfo.SectionDisabled;
+    }
     
     // Find where case 0x2 is located. This is where the dialog for unreadable disk would be shown.
     off_t index = 0;
