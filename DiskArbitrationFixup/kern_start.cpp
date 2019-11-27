@@ -64,6 +64,7 @@ static void buildPatch(void *user, KernelPatcher &patcher) {
     if (buffer == NULL) {
         DBGLOG("DiskArbitrationFixup", "Failed to read binary: %s\n", binPathDiskArbitrationAgent);
         procInfo.section = procInfo.SectionDisabled;
+        return;
     }
     
     // Find where case 0x2 is located. This is where the dialog for unreadable disk would be shown.
