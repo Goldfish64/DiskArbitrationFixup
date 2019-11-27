@@ -37,6 +37,7 @@ static uint8_t replaceBytes[] = { 0x83, 0xF8, 0x03, 0x74, 0xFF, 0x83, 0xF8, 0x0F
 // Patching info for DiskArbitrationAgent binary.
 static UserPatcher::BinaryModPatch patchBytesDiskArbitrationAgent {
     CPU_TYPE_X86_64,
+    0,
     findBytes,
     replaceBytes,
     arrsize(findBytes),
