@@ -92,8 +92,11 @@ static void buildPatch(void *user, KernelPatcher &patcher) {
     }
     
     // If we found no match, we can't go on.
-    if (index == 0)
-        panic("DiskArbitrationFixup: Failed to get index into binary: %s\n", binPathDiskArbitrationAgent);
+    if (index == 0) {
+        DBGLOG("DiskArbitrationFixup", "Failed to get index into binary: %s\n", binPathDiskArbitrationAgent);
+        procInfo.section = procInfo.SectionDisabled;
+        return;
+    }
     
     // Get byte 4.
     uint8_t *bufferOffset = buffer + index;
